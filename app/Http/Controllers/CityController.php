@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\city;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Action;
 
 class CityController extends Controller
 {
@@ -42,7 +43,7 @@ class CityController extends Controller
         $request->validate([
             'name_en' => 'required|string|min:3|max:50',
             'name_ar' => 'required|string|min:3|max:50',
-            'active' => 'nullable'
+            'active' => 'nullable|string|in:on'
         ]);
         $city = new city();
         $city->name_en = $request->input('name_en');
@@ -77,6 +78,7 @@ class CityController extends Controller
     public function edit(city $city)
     {
         //
+        return response()->view('cms.cities.edit', ['city' => $city]);
     }
 
     /**
@@ -89,6 +91,20 @@ class CityController extends Controller
     public function update(Request $request, city $city)
     {
         //
+        $request->validate([
+            'name_en' => 'required|string|min:3|max:50',
+            'name_ar' => 'required|string|min:3|max:50',
+            'active' => 'nullable|string|in:on'
+        ]);
+        $city->name_en = $request->input('name_en');
+        $city->name_ar = $request->input('name_ar');
+        $city->active = $request->has('active');
+        $isUpdated = $city->save();
+        if ($isUpdated)
+            return redirect()->route('cities.index');
+        else
+            return redirect()->back();
+
     }
 
     /**
@@ -100,5 +116,7 @@ class CityController extends Controller
     public function destroy(city $city)
     {
         //
+        $deleted = $city->delete();
+        return redirect()->back();
     }
 }

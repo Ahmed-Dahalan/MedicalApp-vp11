@@ -10,5 +10,7 @@ return [
     "name_ar" => "Name (Ar)",
     "active" => "Active",
     "create_city" => "Create City",
-    "save"=>"Save"
+    "save" => "Save",
+    "edit" => "Edit",
+    "edit_city" => "Edit City"
 ];
