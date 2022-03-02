@@ -1,4 +1,5 @@
 @extends('cms.parant')
+@section('title',__('cms.dashboard'))
 @section('main-content')
 <div class="content">
     <div class="container-fluid">
