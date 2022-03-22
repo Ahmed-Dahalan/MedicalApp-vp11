@@ -8,6 +8,10 @@ use Illuminate\Notifications\Action;
 
 class CityController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(city::class,'city');
+    }
     /**
      * Display a listing of the resource.
      *
