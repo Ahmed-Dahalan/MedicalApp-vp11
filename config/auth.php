@@ -43,6 +43,10 @@ return [
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins'
+        ],
+        'patient-api' => [
+            'driver' => 'passport',
+            'provider' => 'patients',
         ]
 
     ],

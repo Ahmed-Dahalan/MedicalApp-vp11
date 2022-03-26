@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class city extends Model
 {
+    protected $casts = [
+        'created_at' => 'datetime:H:ia',
+        // 'created_at' => 'datetime:Y-m-d',
+        'active' => 'boolean',
+    ];
+
+    protected $hidden = [
+        'updated_at',
+        // 'created_at'
+    ];
     use HasFactory;
     public function patients()
     {

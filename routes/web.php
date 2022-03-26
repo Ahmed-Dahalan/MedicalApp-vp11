@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('cms')->middleware('guest:patient,admin')->group(function () {
     Route::get('/{guard}/login', [AuthController::class, 'showLoginVeiw'])->name('auth.login');
     Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/patient/register', [AuthController::class, 'showRegisterVeiw'])->name('auth.register');
+    Route::post('/register', [AuthController::class, 'Register']);
 });
 Route::prefix('cms/admin')->middleware('auth:admin')->group(function () {
     Route::resource('roles', RoleController::class);

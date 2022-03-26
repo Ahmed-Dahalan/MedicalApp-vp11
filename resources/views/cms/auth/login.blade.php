@@ -54,6 +54,9 @@
                 </label>
               </div>
             </div>
+            <p class="mb-0">
+              <a href="{{route('auth.register')}}" class="text-center">Register a new membership</a>
+            </p>
             <!-- /.col -->
             <div class="col-4">
               <button type="button" onclick="perFormStore()" class="btn btn-primary btn-block">Sign In</button>
